@@ -1,0 +1,5 @@
+ssoid,ts,grp,type,subtype,url,orgid,formid,code,ltpa,sudirresponse,ymdh
+650ae77a-ffce-475d-a930-c7e345e0658c,1499763594,guis_-47,formcontroller,send,https://www.mos.ru/pgu/ru/application/guis/-47/#step_1,guis,-47,MPGU,,,2017-07-11-09
+aeadac26-3e19-438b-8e4a-a1ae754bbe41,1499763600,guis-47,bill,prepare,,,,,,,2017-07-11-09
+Unauthorized,1499763577,gibdd_fines,formcontroller,start,https://www.mos.ru/pgu/ru/application/gibdd/fines/?onsite_from=popular#step_1,gibdd,fines,MPGU,,,2017-07-11-09
+1f5ffc1e-0845-4a13-9647-a78081b6dc13,1499763599,mosenergo_counters,formcontroller,start,https://www.mos.ru/pgu/ru/application/mosenergo/counters/,mosenergo,counters,MPGU,,,2017-07-11-09

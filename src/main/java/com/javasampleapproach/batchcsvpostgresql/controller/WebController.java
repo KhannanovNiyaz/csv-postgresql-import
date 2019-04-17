@@ -21,6 +21,7 @@ public class WebController {
 	@RequestMapping("/runjob")
 	public String handle() throws Exception {
 		Logger logger = LoggerFactory.getLogger(this.getClass());
+		long start = System.currentTimeMillis();
 		try {
 			JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
 					.toJobParameters();
@@ -28,6 +29,8 @@ public class WebController {
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}
-		return "Done! Check Console Window for more details";
+		long end = System.currentTimeMillis() - start;
+		String bench = String.valueOf(end);
+		return "Done! Check Console Window for more details " + bench;
 	}
 }

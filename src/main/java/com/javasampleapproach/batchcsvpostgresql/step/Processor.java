@@ -14,18 +14,18 @@ public class Processor implements ItemProcessor<Customer, Customer> {
 
     @Override
     public Customer process(Customer customer) throws Exception {
-        final String ssoid = customer.getSsoid().toUpperCase();
-        final String ts = customer.getTs().toUpperCase();
-        final String grp = customer.getGrp().toUpperCase();
-        final String type = customer.getType().toUpperCase();
-        final String subtype = customer.getSubtype().toUpperCase();
-        final String url = customer.getUrl().toUpperCase();
-        final String orgid = customer.getOrgid().toUpperCase();
-        final String formid = customer.getFormid().toUpperCase();
-        final String code = customer.getCode().toUpperCase();
-        final String ltpa = customer.getLtpa().toUpperCase();
-        final String sudirresponse = customer.getSudirresponse().toUpperCase();
-        final String ymdh = customer.getYmdh().toUpperCase();
+        final String ssoid = customer.getSsoid();
+        final String ts = customer.getTs();
+        final String grp = customer.getGrp();
+        final String type = customer.getType();
+        final String subtype = customer.getSubtype();
+        final String url = customer.getUrl();
+        final String orgid = customer.getOrgid();
+        final String formid = customer.getFormid();
+        final String code = customer.getCode();
+        final String ltpa = customer.getLtpa();
+        final String sudirresponse = customer.getSudirresponse();
+        final String ymdh = customer.getYmdh();
 
         final Customer fixedCustomer = new Customer( ssoid, ts, grp, type, subtype, url, orgid, formid, code, ltpa, sudirresponse, ymdh);
 

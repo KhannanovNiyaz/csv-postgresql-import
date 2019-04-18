@@ -21,6 +21,7 @@ import com.javasampleapproach.batchcsvpostgresql.step.Writer;
 @EnableBatchProcessing
 public class BatchConfig {
 
+
 	@Autowired
 	public JobBuilderFactory jobBuilderFactory;
 

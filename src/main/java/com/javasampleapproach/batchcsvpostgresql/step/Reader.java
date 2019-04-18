@@ -13,6 +13,7 @@ public class Reader {
         FlatFileItemReader<Customer> reader = new FlatFileItemReader<Customer>();
 
         reader.setResource(new ClassPathResource(path));
+        reader.setLinesToSkip(1);
         reader.setLineMapper(new DefaultLineMapper<Customer>() {
             {
                 setLineTokenizer(new DelimitedLineTokenizer() {

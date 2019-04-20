@@ -25,6 +25,7 @@ public class Listener extends JobExecutionListenerSupport {
 		if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
 			log.info("Finish Job! Check the results");
 
+//			List<Customer> customers = customerDao.loadFormUseLastHourse();
 			List<Customer> customers = customerDao.loadAllCustomers();
 
 			for (Customer customer : customers) {

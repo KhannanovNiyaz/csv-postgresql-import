@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>TOP Used Forms</title>
+    <link th:href="@{/main.css}" rel="stylesheet"/>
+</head>
+
+<body class="container">
+<h2>ТОП – 5 самых используемых форм</h2>
+
+<div class="menu-button">
+    <form action="menu">
+        <input type="submit" value="Вернуться в меню"/>
+    </form>
+</div>
+
+<div>
+    <div th:if="${not #lists.isEmpty(topFiveUseForms)}">
+        <table>
+            <tr>
+                <th>formid</th>
+            </tr>
+            <tr th:each="customer : ${topFiveUseForms}">
+                <td th:text="${customer.getFormid()}"></td>
+
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

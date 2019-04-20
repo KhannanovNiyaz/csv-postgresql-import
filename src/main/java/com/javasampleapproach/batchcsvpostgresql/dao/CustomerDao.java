@@ -7,4 +7,8 @@ import com.javasampleapproach.batchcsvpostgresql.model.Customer;
 public interface CustomerDao {
 	public void insert(List<? extends Customer> customers);
 	List<Customer> loadAllCustomers();
+	List<Customer> loadFormUseLastHourse();
+	List<Customer> userStatus();
+	List<Customer> topFiveUseForms();
+
 }

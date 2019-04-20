@@ -13,3 +13,5 @@ select * from customer where grp like 'dszn_%' and subtype not in ('send') order
 
 select formid, count(formid) as countNum  from customer group by formid order by countNum desc
 select formid, count(formid) as countNum from customer group by formid order by countNum desc limit 5
+SELECT formid, COUNT(formid) as code FROM customer WHERE NOT (formid = '') GROUP BY formid ORDER BY code DESC LIMIT 5
+SELECT formid FROM (SELECT formid, COUNT(formid) as countNum FROM customer WHERE NOT (formid = '') GROUP BY formid ORDER BY countNum DESC LIMIT 5) AS result

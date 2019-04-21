@@ -25,12 +25,12 @@ public class WebController {
 	@Autowired
 	CustomerDao customerDao;
 
-	@GetMapping("/")
+	@RequestMapping("/")
 	public String startPage(){
 		return "start";
 	}
 
-	@GetMapping("/returnMenu")
+	@RequestMapping("/returnMenu")
 	public String showMenu(){
 		return "menu";
 	}

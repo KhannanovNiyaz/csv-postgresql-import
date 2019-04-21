@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Configuration;
 
 import com.javasampleapproach.batchcsvpostgresql.dao.CustomerDao;
 import com.javasampleapproach.batchcsvpostgresql.model.Customer;
-import com.javasampleapproach.batchcsvpostgresql.step.Listener;
-import com.javasampleapproach.batchcsvpostgresql.step.Processor;
-import com.javasampleapproach.batchcsvpostgresql.step.Reader;
-import com.javasampleapproach.batchcsvpostgresql.step.Writer;
+import com.javasampleapproach.batchcsvpostgresql.mainImportClass.Listener;
+import com.javasampleapproach.batchcsvpostgresql.mainImportClass.Processor;
+import com.javasampleapproach.batchcsvpostgresql.mainImportClass.Reader;
+import com.javasampleapproach.batchcsvpostgresql.mainImportClass.Writer;
 
 @Configuration
 @EnableBatchProcessing

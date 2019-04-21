@@ -1,4 +1,4 @@
-package com.javasampleapproach.batchcsvpostgresql.step;
+package com.javasampleapproach.batchcsvpostgresql.mainImportClass;
 
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;

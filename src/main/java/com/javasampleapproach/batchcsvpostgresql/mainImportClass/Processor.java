@@ -1,6 +1,4 @@
-package com.javasampleapproach.batchcsvpostgresql.step;
-
-import java.util.Random;
+package com.javasampleapproach.batchcsvpostgresql.mainImportClass;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

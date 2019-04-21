@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>SpringBatchCSVPostgreSQL</name>
-	<description>Demo project for Spring Batch CSV Data to PostgreSQL</description>
+	<description> project for Spring Batch CSV Data to PostgreSQL</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

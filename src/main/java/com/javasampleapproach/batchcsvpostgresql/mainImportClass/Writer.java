@@ -1,4 +1,4 @@
-package com.javasampleapproach.batchcsvpostgresql.step;
+package com.javasampleapproach.batchcsvpostgresql.mainImportClass;
 
 import java.util.List;
 

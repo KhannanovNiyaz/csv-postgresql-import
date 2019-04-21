@@ -1,6 +1,8 @@
 package com.javasampleapproach.batchcsvpostgresql.controller;
 
 import com.javasampleapproach.batchcsvpostgresql.dao.CustomerDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
@@ -34,35 +36,31 @@ public class WebController {
 	}
 
 	@RequestMapping(value = "menu", method = RequestMethod.GET)
-//	@GetMapping("/menu")
 	public String handle() throws Exception {
-//		Logger logger = LoggerFactory.getLogger(this.getClass());
+		Logger logger = LoggerFactory.getLogger(this.getClass());
 		try {
 			JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
 					.toJobParameters();
 			jobLauncher.run(job, jobParameters);
 		} catch (Exception e) {
-//			logger.info(e.getMessage());
+			logger.info(e.getMessage());
 		}
 		return "menu";
 	}
 
 	@RequestMapping(value = "useformlasthours", method = RequestMethod.GET)
-//	@GetMapping("/useformlasthours")
 	public String loadFormUseLastHourse(Model model){
 		model.addAttribute("useForms", customerDao.loadFormUseLastHourse());
 		return "useformlasthours";
 	}
 
 	@RequestMapping(value = "userstatus", method = RequestMethod.GET)
-//	@GetMapping("/userstatus")
 	public String userStatus(Model model){
 		model.addAttribute("userStatus", customerDao.userStatus());
 		return "userstatus";
 	}
 
 	@RequestMapping(value = "topfiveuseforms", method = RequestMethod.GET)
-//	@GetMapping("/topfiveuseforms")
 	public String topFiveUseForm(Model model){
 		model.addAttribute("topFiveUseForms", customerDao.topFiveUseForms());
 		return "topfiveuseforms";

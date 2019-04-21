@@ -1,6 +1,8 @@
 package com.javasampleapproach.batchcsvpostgresql.dao.impl;
 
 import java.sql.*;
+import java.time.Clock;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -145,8 +147,15 @@ public class CustomerDaoImpl extends JdbcDaoSupport implements CustomerDao {
 
     @Override
     public List<Customer> loadFormUseLastHourse() {
+        Clock clock = Clock.systemDefaultZone();
+        Instant instant = clock.instant();   // or Instant.now();
+//        String seconds = String.valueOf(instant.getEpochSecond() - 60*40);
+        String seconds = String.valueOf(15000394);
+
+
         long start = System.nanoTime();
-        String sql = "SELECT ssoid, formid, ts  FROM customer";
+
+        String sql = "SELECT ssoid, formid, ts  FROM customer WHERE ts >= '" + seconds + "'";
         List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
         List<Customer> result = new ArrayList<Customer>();
         for (Map<String, Object> row : rows) {

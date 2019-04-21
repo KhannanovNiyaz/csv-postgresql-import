@@ -28,6 +28,11 @@ public class WebController {
 		return "start";
 	}
 
+	@GetMapping("/returnMenu")
+	public String showMenu(){
+		return "menu";
+	}
+
 	@RequestMapping(value = "menu", method = RequestMethod.GET)
 //	@GetMapping("/menu")
 	public String handle() throws Exception {

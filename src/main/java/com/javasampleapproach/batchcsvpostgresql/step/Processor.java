@@ -15,7 +15,7 @@ public class Processor implements ItemProcessor<Customer, Customer> {
     @Override
     public Customer process(Customer customer) throws Exception {
         final String ssoid = customer.getSsoid();
-        final String ts = customer.getTs();
+        final long ts = customer.getTs();
         final String grp = customer.getGrp();
         final String type = customer.getType();
         final String subtype = customer.getSubtype();

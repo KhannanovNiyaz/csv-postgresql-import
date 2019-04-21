@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS customer;
 
 CREATE TABLE customer  (
     ssoid VARCHAR(100),
-    ts VARCHAR(50),
+    ts BIGINT,
     grp VARCHAR(50),
     type VARCHAR(50),
     subtype VARCHAR(50),

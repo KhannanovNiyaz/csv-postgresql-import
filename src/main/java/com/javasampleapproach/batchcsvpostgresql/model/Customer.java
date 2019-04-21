@@ -2,7 +2,7 @@ package com.javasampleapproach.batchcsvpostgresql.model;
 
 public class Customer {
 	private String ssoid;
-	private String ts;
+	private long ts;
 	private String grp;
 	private String type;
 	private String subtype;
@@ -17,7 +17,7 @@ public class Customer {
 	public Customer() {
 	}
 
-	public Customer( String ssoid, String ts, String grp, String type, String subtype, String url, String orgid, String formid, String code, String ltpa, String sudirresponse, String ymdh) {
+	public Customer( String ssoid, long ts, String grp, String type, String subtype, String url, String orgid, String formid, String code, String ltpa, String sudirresponse, String ymdh) {
 		this.ssoid = ssoid;
 		this.ts = ts;
 		this.grp = grp;
@@ -40,11 +40,11 @@ public class Customer {
 		this.ssoid = ssoid;
 	}
 
-	public String getTs() {
+	public long getTs() {
 		return ts;
 	}
 
-	public void setTs(String ts) {
+	public void setTs(long ts) {
 		this.ts = ts;
 	}
 

@@ -8,6 +8,8 @@ CREATE TABLE customer  (
 
 select ssoid, formid, ts  from customer
 
+SELECT ssoid, formid, to_timestamp(ts) AT  TIME ZONE 'UTC'  FROM customer
+
 select * from customer where grp like 'dszn_%' and subtype not in ('send') order by subtype desc
 select * from customer where grp like 'dszn_%' and subtype not in ('send') order by grp desc, subtype desc
 

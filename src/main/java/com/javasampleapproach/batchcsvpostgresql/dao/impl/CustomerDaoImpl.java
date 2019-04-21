@@ -1,9 +1,11 @@
 package com.javasampleapproach.batchcsvpostgresql.dao.impl;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.time.Clock;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -38,7 +40,7 @@ public class CustomerDaoImpl extends JdbcDaoSupport implements CustomerDao {
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 Customer customer = Customers.get(i);
                 ps.setString(1, customer.getSsoid());
-                ps.setString(2, customer.getTs());
+                ps.setLong(2, customer.getTs());
                 ps.setString(3, customer.getGrp());
                 ps.setString(4, customer.getType());
                 ps.setString(5, customer.getSubtype());
@@ -67,7 +69,7 @@ public class CustomerDaoImpl extends JdbcDaoSupport implements CustomerDao {
         for (Map<String, Object> row : rows) {
             Customer customer = new Customer();
             customer.setSsoid((String) row.get("ssoid"));
-            customer.setTs((String) row.get("ts"));
+            customer.setTs((long) row.get("ts"));
             customer.setGrp((String) row.get("grp"));
             customer.setType((String) row.get("type"));
             customer.setSubtype((String) row.get("subtype"));
@@ -82,7 +84,7 @@ public class CustomerDaoImpl extends JdbcDaoSupport implements CustomerDao {
         }
 
         System.err.println("****************Time select****************");
-        System.out.println( System.nanoTime() - start);
+        System.out.println(System.nanoTime() - start);
 
         return result;
     }
@@ -147,27 +149,30 @@ public class CustomerDaoImpl extends JdbcDaoSupport implements CustomerDao {
 
     @Override
     public List<Customer> loadFormUseLastHourse() {
-        Clock clock = Clock.systemDefaultZone();
-        Instant instant = clock.instant();   // or Instant.now();
-//        String seconds = String.valueOf(instant.getEpochSecond() - 60*40);
-        String seconds = String.valueOf(15000394);
-
+        SimpleDateFormat sdf = new SimpleDateFormat("kk:mm:ss");
+        long currentTime = Clock.systemDefaultZone().instant().getEpochSecond();
+        String currentTimeString = sdf.format(new Date(currentTime * 1000));
+        long oneHourAgo = currentTime - 60 * 60;
+        String oneHourAgoString = sdf.format(new Date(oneHourAgo * 1000));
+        System.out.println("currentTimeString = " + currentTimeString);
+        System.out.println("oneHourAgoString = " + oneHourAgoString);
 
         long start = System.nanoTime();
 
-        String sql = "SELECT ssoid, formid, ts  FROM customer WHERE ts >= '" + seconds + "'";
+        String sql = "SELECT ssoid, formid, ts FROM customer where to_char(to_timestamp(ts / 1000), 'HH24:MI:SS') between '" + oneHourAgoString + "' AND '" + currentTimeString + "'";
+//        String sql = "SELECT ssoid, formid, ts  FROM customer WHERE ts >= '" + seconds + "'";
         List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
         List<Customer> result = new ArrayList<Customer>();
         for (Map<String, Object> row : rows) {
             Customer customer = new Customer();
             customer.setSsoid((String) row.get("ssoid"));
             customer.setFormid((String) row.get("formid"));
-            customer.setTs((String) row.get("ts"));
+            customer.setTs((long) row.get("ts"));
             result.add(customer);
         }
 
         System.err.println("****************Time select****************");
-        System.out.println( System.nanoTime() - start);
+        System.out.println(System.nanoTime() - start);
 
         return result;
     }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Menu</title>
+    <link th:href="@{/main.css}" rel="stylesheet"/>
+</head>
+
+<body class="container">
+<h2>Вывести отчеты:</h2>
+
+<div>
+
+    <form action="useformlasthours" target="_blank">
+        <input class="myButtonStyle" type="submit"
+               value="Пользователи и используемые формы за последний час"/>
+    </form>
+
+    <form action="userstatus" target="_blank">
+        <input class="myButtonStyle" type="submit"
+               value="Пользователи, которые начали активность на форме и не дошли до конца"/>
+    </form>
+
+    <form action="topfiveuseforms" target="_blank">
+        <input class="myButtonStyle" type="submit" value="ТОП – 5 самых используемых форм"/>
+    </form>
+
+</div>
+
+</body>
+</html>

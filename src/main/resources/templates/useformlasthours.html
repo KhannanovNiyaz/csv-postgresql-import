@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>User List and Forms</title>
+    <link th:href="@{/main.css}" rel="stylesheet"/>
+</head>
+
+<body class="container">
+<h2>Список пользователей и используемых форм за час</h2>
+
+<div class="menu-button">
+    <form action="returnMenu">
+        <input type="submit" value="Вернуться в меню"/>
+    </form>
+</div>
+
+<div>
+    <div th:if="${not #lists.isEmpty(useForms)}">
+        <table>
+            <tr>
+                <th>ssoid</th>
+                <th>formid</th>
+                <th>ts</th>
+            </tr>
+            <tr th:each="customer : ${useForms}">
+                <td th:text="${customer.getSsoid()}"></td>
+                <td th:text="${customer.getFormid()}"></td>
+                <td th:text="${customer.getTs()}"></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Status</title>
+    <link th:href="@{/main.css}" rel="stylesheet"/>
+</head>
+
+<body class="container">
+<h2>Cписок активных пользователей</h2>
+
+<div class="menu-button">
+    <form action="returnMenu">
+        <input type="submit" value="Вернуться в меню"/>
+    </form>
+</div>
+
+<div>
+    <div th:if="${not #lists.isEmpty(userStatus)}">
+        <table>
+            <tr>
+                <th>ssoid</th>
+                <th>ts</th>
+                <th>grp</th>
+                <th>type</th>
+                <th>subtype</th>
+                <th>url</th>
+                <th>orgid</th>
+                <th>formid</th>
+                <th>code</th>
+                <th>ltpa</th>
+                <th>sudirresponse</th>
+                <th>ymdh</th>
+            </tr>
+            <tr th:each="customer : ${userStatus}">
+                <td th:text="${customer.getSsoid()}"></td>
+                <td th:text="${customer.getTs()}"></td>
+                <td th:text="${customer.getGrp()}"></td>
+                <td th:text="${customer.getType()}"></td>
+                <td th:text="${customer.getSubtype()}"></td>
+                <td th:text="${customer.getUrl()}"></td>
+                <td th:text="${customer.getOrgid()}"></td>
+                <td th:text="${customer.getFormid()}"></td>
+                <td th:text="${customer.getCode()}"></td>
+                <td th:text="${customer.getLtpa()}"></td>
+                <td th:text="${customer.getSudirresponse()}"></td>
+                <td th:text="${customer.getYmdh()}"></td>
+
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

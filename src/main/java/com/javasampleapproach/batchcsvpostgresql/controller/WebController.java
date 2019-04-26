@@ -10,7 +10,6 @@ import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -36,7 +35,7 @@ public class WebController {
 	}
 
 	@RequestMapping(value = "menu", method = RequestMethod.GET)
-	public String handle() throws Exception {
+	public String handle()  {
 		Logger logger = LoggerFactory.getLogger(this.getClass());
 		try {
 			JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())

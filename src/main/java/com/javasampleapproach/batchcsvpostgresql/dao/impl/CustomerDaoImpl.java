@@ -1,25 +1,22 @@
 package com.javasampleapproach.batchcsvpostgresql.dao.impl;
 
-import java.sql.*;
+import com.javasampleapproach.batchcsvpostgresql.dao.CustomerDao;
+import com.javasampleapproach.batchcsvpostgresql.model.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.stereotype.Repository;
+
+import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.Clock;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
-import javax.annotation.PostConstruct;
-import javax.sql.DataSource;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BatchPreparedStatementSetter;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
-import org.springframework.stereotype.Repository;
-
-import com.javasampleapproach.batchcsvpostgresql.dao.CustomerDao;
-import com.javasampleapproach.batchcsvpostgresql.model.Customer;
 
 @Repository
 public class CustomerDaoImpl extends JdbcDaoSupport implements CustomerDao {
@@ -60,7 +57,7 @@ public class CustomerDaoImpl extends JdbcDaoSupport implements CustomerDao {
 
     private List<Customer> getCustomerDatabase(String sql) {
         List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
-        List<Customer> result = new ArrayList<Customer>();
+        List<Customer> result = new ArrayList<>();
         for (Map<String, Object> row : rows) {
             Customer customer = new Customer();
             customer.setSsoid((String) row.get("ssoid"));
@@ -97,7 +94,7 @@ public class CustomerDaoImpl extends JdbcDaoSupport implements CustomerDao {
         String sql = "SELECT ssoid, formid, ts FROM customer where to_char(to_timestamp(ts / 1000), 'HH24:MI:SS') between '" + oneHourAgoString + "' AND '" + currentTimeString + "'";
 
         List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
-        List<Customer> result = new ArrayList<Customer>();
+        List<Customer> result = new ArrayList<>();
         for (Map<String, Object> row : rows) {
             Customer customer = new Customer();
             customer.setSsoid((String) row.get("ssoid"));
@@ -120,7 +117,7 @@ public class CustomerDaoImpl extends JdbcDaoSupport implements CustomerDao {
         String sql = "SELECT formid FROM (SELECT formid, COUNT(formid) as countNum FROM customer WHERE NOT (formid = '') GROUP BY formid ORDER BY countNum DESC LIMIT 5) AS result";
         List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 
-        List<Customer> result = new ArrayList<Customer>();
+        List<Customer> result = new ArrayList<>();
         for (Map<String, Object> row : rows) {
             Customer customer = new Customer();
             customer.setFormid((String) row.get("formid"));
